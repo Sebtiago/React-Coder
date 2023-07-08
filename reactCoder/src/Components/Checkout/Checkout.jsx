@@ -7,6 +7,7 @@ import { useNotification } from "../../Notification/notification"
 import { useState } from "react"
 
 import { useNavigate } from "react-router-dom"
+import "../Checkout/Checkout.css"
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
@@ -81,10 +82,17 @@ const Checkout = () => {
 
     return (
         <>
-            <h1>Checkout</h1>
-            <h2>Formulario</h2>
-            <button onClick={createOrder}>Generar orden de compra</button>
-        </>
+        <h1 className="CartList">Checkout</h1>
+            <div className="CartResumen">
+                <input className="Field" type="text" name="name"  placeholder="Nombre" />
+                <input className="Field" type="text" name="phone"  placeholder="Teléfono" />
+                <input className="Field" type="email" name="email" placeholder="Correo electrónico" />
+                <button className="Option" onClick={createOrder}>Generar orden de compra</button>
+            </div>
+           
+                
+
+      </>
     )
 }
 
