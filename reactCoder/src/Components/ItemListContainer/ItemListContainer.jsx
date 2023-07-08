@@ -1,49 +1,35 @@
-import { useEffect, useState } from "react"
-//import {getProducts, getProductsByCategory} from "../../asyncMock"
-import ItemList from "../ItemList/ItemList"
+import { useEffect, useState, memo } from 'react'
+import { useParams } from 'react-router-dom'
+
+import { useAsync } from '../../hooks/useAsync'
+
+import { getProducts } from '../services/firestore/products'
+import Loader from '../Loader/Loader'
+import ItemList from '../ItemList/ItemList'
 import "../ItemListContainer/ItemListContainer.css"
-import logoCTH from '../../assets/logoCTH.svg'
-
-import { useParams } from "react-router"
-
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { db } from '../services/firebase/firebaseConfig'
+import Banner from '../Banner/Banner'
 
 
-const ItemListContainer = () =>{
-    const [products, setProducts] = useState([])
-
+const ItemListContainer = () => {
     const { categoryId } = useParams()
+
+    const getProductsWithCategory = () => getProducts(categoryId)
+
+    const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
     
+    if(loading) {
+        return <Loader/>
+    }
 
+    if(error) {
+        return 
+                <h1>Hubo un error al obtener los productos, cargue nuevamente</h1>
 
-    useEffect(() => {
-        const productsRef = !categoryId 
-            ? collection(db, 'products')
-            : query(collection(db, 'products'), where('category', '==', categoryId))
-
-        getDocs(productsRef)
-            .then(querySnapshot =>{
-                const productsAdapted = querySnapshot.docs.map(doc => {
-                    const fields = doc.data()
-                    return { id: doc.id, ...fields }
-                }) 
-                
-                setProducts(productsAdapted)
-            })
-            .finally(() => {
-            })
-            
-
-       }, [categoryId])
-    
+    }
     
     return(
         <div>
-            <div className="Banner">
-                    <img className="LogoBanner" src={logoCTH} alt="Logo CTH" />
-                    <p>El futuro está en tus manos. Únete a Coder Tech-Hub hoy mismo</p>
-                </div>
+            <Banner/>
             <ItemList products={products}/>
         </div>
     )

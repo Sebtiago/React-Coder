@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { getProductById } from "../../asyncMock"
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
-import logoCTH from '../../assets/logoCTH.svg'
 import './ItemDetailContainer.css'
 
 import { getDoc, doc } from 'firebase/firestore'
 import { db } from '../services/firebase/firebaseConfig'
+import Loader from "../Loader/Loader"
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
@@ -37,10 +37,7 @@ const ItemDetailContainer = () => {
     }, [itemId])
 
     if(loading) {
-        return <div className="Loading">
-            <img src={logoCTH} alt={logoCTH} className="logoLoader"/>
-            <h1>Estamos cargando tus productos</h1>
-        </div>
+        return <Loader/>
         
     }
 
