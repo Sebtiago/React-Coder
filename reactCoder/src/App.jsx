@@ -8,7 +8,7 @@ import "./App.css"
 import { NotificationProvider } from './Notification/notification'
 
 import Cart from "./Components/Cart/Cart"
-import Checkout from "./components/Checkout/Checkout"
+import Checkout from "./Components/Checkout/Checkout"
 
 function App() {
 
