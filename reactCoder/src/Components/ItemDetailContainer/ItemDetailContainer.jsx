@@ -5,6 +5,9 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 import logoCTH from '../../assets/logoCTH.svg'
 import './ItemDetailContainer.css'
 
+import { getDoc, doc } from 'firebase/firestore'
+import { db } from '../services/firebase/firebaseConfig'
+
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -19,15 +22,16 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true)
+        const productRef = doc(db, 'products', itemId)
 
         getProductById(itemId)
-            .then(response => {
-                setProduct(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-            .finally(() => {
+        getDoc(productRef)
+        .then(querySnapshot => {
+            const fields = querySnapshot.data()
+            const productAdapted = { id: querySnapshot.id, ...fields} 
+
+            setProduct(productAdapted)
+        }).finally(() => {
                 setLoading(false)
             })
     }, [itemId])

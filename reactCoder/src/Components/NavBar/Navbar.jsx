@@ -19,7 +19,8 @@ const Navbar = () => {
                 <NavLink to={`/category/portatiles`} className={({isActive}) => isActive ? styles.active : styles.active}>Portátiles</NavLink>
                 <NavLink to={`/category/perifericos`} className={({isActive}) => isActive ? styles.active : styles.active}>Periféricos</NavLink>
             </section>
-             <CartWidget />
+            <Link to='/cart'><CartWidget /></Link>
+             
         </nav>
     )
 }

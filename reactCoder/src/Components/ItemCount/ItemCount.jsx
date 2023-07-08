@@ -24,7 +24,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 <h4 className="Number">{count}</h4>
                 <button className="ButtonR" onClick={increment}>+</button>
             </div>
-            <button  onClick={() => onAdd(count)} diseable={!stock} className="ButtonCart">
+            <button  onClick={() => onAdd(count)} className="ButtonCart">
                 <img className="SvgCartBlack" src={cartBlack} alt="CartSVG" />
                 <img className="SvgCart" src={cart} alt="CartSVG" />
                  Agregar al carrito

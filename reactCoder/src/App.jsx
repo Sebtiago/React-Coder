@@ -7,6 +7,8 @@ import { CartProvider } from './Context/CartContext'
 import "./App.css"
 import { NotificationProvider } from './Notification/notification'
 
+import Cart from "./Components/Cart/Cart"
+import Checkout from "./components/Checkout/Checkout"
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
                   <Route path='/' element={<ItemListContainer home={true}/>}></Route>
                   <Route path='/category/:categoryId' element={<ItemListContainer/>}></Route>
                   <Route path='/item/:itemId' element={<ItemDetailContainer/>}></Route>
+                  <Route path='/cart'  element={<Cart />}></Route>
+                  <Route path='/checkout'  element={<Checkout />}></Route>
                   <Route path='*' element={<h1>404 NOT FOUND</h1>}></Route>
               </Routes>
             </CartProvider>
