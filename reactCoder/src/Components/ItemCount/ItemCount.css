@@ -1,0 +1,90 @@
+.Counter{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    flex-direction: row;
+  
+}
+.Controls{
+
+ display: flex;
+  justify-content: center;
+  align-items: center;
+flex-direction: row; display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+.ButtonL{
+    width: 40px;
+    height: 50px;
+    border-radius: 5px 1px 1px 5px;
+    background: #252422;
+    color: #FFF;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ButtonR{
+    width: 40px;
+    height: 50px;
+    border-radius: 1px 5px 5px 1px;
+    background: #252422;
+    color: #FFF;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ButtonL:hover,.ButtonR:hover{
+    background:  #F19A26;
+    color: #252422;
+}
+.Number{
+    width: 50px;
+    height: 50px;
+    color: #252422;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 900;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ButtonCart{
+    width: 250px;
+    height: 51px;
+    border-radius: 5px;
+    color: #FFF;
+    background: #252422;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+.ButtonCart:hover{
+    color: #252422;
+
+    background: #F19A26;
+    .SvgCart{
+        display: none;
+    }
+    .SvgCartBlack{
+        display: block;
+    
+    }
+}
+.SvgCartBlack{
+    display: none;
+
+}
+

@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css'
 import CartWidget from '../CartWidget/CartWidget'
-import logoCTH from './assets/logoCTH.svg'
+import logoCTH from '../../assets/logoCTH.svg'
 import { NavLink, Link } from 'react-router-dom'
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
             </Link>
 
             <section>
-                <NavLink to={`/category/telefonos`} className={({isActive}) => isActive ? styles.active : styles.inactive}>Teléfonos móviles</NavLink>
+                <NavLink to={`/category/telefonos`} className={({isActive}) => isActive ? styles.active : styles.active}>Teléfonos móviles</NavLink>
                 <NavLink to={`/category/tabletas`} className={({isActive}) => isActive ? styles.active : styles.active}>Tabletas</NavLink>
                 <NavLink to={`/category/portatiles`} className={({isActive}) => isActive ? styles.active : styles.active}>Portátiles</NavLink>
                 <NavLink to={`/category/perifericos`} className={({isActive}) => isActive ? styles.active : styles.active}>Periféricos</NavLink>

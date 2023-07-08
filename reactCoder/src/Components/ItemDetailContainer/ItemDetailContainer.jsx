@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { getProductById } from "../../asyncMock"
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
+import logoCTH from '../../assets/logoCTH.svg'
+import './ItemDetailContainer.css'
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
@@ -10,7 +12,7 @@ const ItemDetailContainer = () => {
     const { itemId } = useParams()
     
     useEffect(() => {
-        document.title = product ? product.name : 'CODER TECH-HUB' 
+        document.title = product ? product.name : 'CODER TECH/HUB' 
 
         return () => document.title = 'CODER-TH'
     }, [product])
@@ -31,13 +33,17 @@ const ItemDetailContainer = () => {
     }, [itemId])
 
     if(loading) {
-        return <h1>Cargando Producto</h1>
+        return <div className="Loading">
+            <img src={logoCTH} alt={logoCTH} className="logoLoader"/>
+            <h1>Estamos cargando tus productos</h1>
+        </div>
+        
     }
 
     return (
-        <div>
+        <div className="ItemDetailContainer">
             <h1>Detalle del producto</h1>
-            <ItemDetail {...product}/>
+            <ItemDetail {...product} />
         </div>
     )
 }
